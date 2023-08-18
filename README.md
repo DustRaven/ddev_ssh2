@@ -15,4 +15,16 @@ PHP Warning:  ssh2_connect(): Error starting up SSH connection(-5): Unable to ex
   Match user sftpuser
     PasswordAuthentication yes # Only if you use a password, not recommended!
   ```
+* Configure your sftp access credentials in index.php:
+  ```php
+  <?php
+  include ("./Server.php");
+  
+  $server = (new Server)
+  ->setPassword("password")
+  ->setUser("user")
+  ->setUrl("host")
+  ->setPort(22)
+  ;
+  ```
 * Run `ddev config` and then `ddev exec php -f index.php`
