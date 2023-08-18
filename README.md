@@ -21,10 +21,10 @@ PHP Warning:  ssh2_connect(): Error starting up SSH connection(-5): Unable to ex
   include ("./Server.php");
   
   $server = (new Server)
-  ->setPassword("password")
-  ->setUser("user")
-  ->setUrl("host")
-  ->setPort(22)
+    ->setPassword("password")
+    ->setUser("user")
+    ->setUrl("host")
+    ->setPort(22)
   ;
   ```
 * Run `ddev config` and then `ddev exec php -f index.php`
