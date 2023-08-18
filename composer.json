@@ -1,0 +1,16 @@
+{
+  "name": "vendor_name/ssh2test",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "sam",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "ext-ssh2": "*"
+  }
+}

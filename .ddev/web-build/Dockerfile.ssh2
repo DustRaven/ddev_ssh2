@@ -1,0 +1,12 @@
+ENV extension=ssh2
+ENV extension_source=https://pecl.php.net/get/ssh2-1.3.1.tgz
+ENV extension_version=v1.3.1
+ENV DDEV_PHP_VERSION=8.1
+
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends --no-install-suggests autoconf build-essential libc-dev php-pear php${DDEV_PHP_VERSION}-dev pkg-config zlib1g-dev libssh2-1-dev
+RUN mkdir -p /tmp/php-${extension}/extension && cd /tmp/php-${extension}/extension && wget -qO- ${extension_source} | tar -zxf - --strip-components=1
+WORKDIR /tmp/php-${extension}/extension
+RUN phpize
+RUN ./configure
+RUN make install
+RUN echo "extension=${extension}.so" > /etc/php/${DDEV_PHP_VERSION}/mods-available/${extension}.ini
